@@ -1,0 +1,100 @@
+/* Estilos para el formulario de login */
+.login-form {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 0 auto; /* Centra el formulario horizontalmente */
+  }
+  
+  /* Estilos para los campos de entrada de texto */
+  .login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; /* Borde del campo de entrada */
+    border-radius: 4px;
+  }
+  
+  /* Estilos para el botón de inicio de sesión */
+  .login-form button {
+    background-color: #007bff; /* Color de fondo del botón de inicio de sesión */
+    color: #fff; /* Color del texto del botón de inicio de sesión */
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo */
+  }
+  
+  .login-form button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el cursor sobre el botón */
+  }
+  
+  /* Estilos para el enlace "Crear una cuenta" */
+  .login-form a {
+    text-decoration: none; /* Quita la subraya del enlace */
+    color: #111316; /* Color del enlace */
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+  }
+  
+  .login-form a:hover {
+    text-decoration: underline; 
+    color: #0056b3;/* Subraya el enlace al pasar el cursor sobre él */
+  }
+  
+  /* Estilos para el título del formulario */
+  .login-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333; /* Color del título */
+  }
+  
+
+  .parra{
+    color: black;
+    padding: 1px;
+    padding-top: 30px;
+  }
+  .error-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+  }
+  
+  .error-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  /* Estilos específicos para el mensaje de contraseña incorrecta */
+  .error-content p {
+    color: black;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos específicos para el botón de cerrar */
+  .error-content button {
+    background-color: rgb(56, 95, 214);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .error-content button:hover {
+    background-color: rgb(8, 99, 204);
+  }
+  
