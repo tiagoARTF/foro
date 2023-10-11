@@ -1,0 +1,56 @@
+/* Estilos para la tarjeta de libros */
+.libro-tarjeta {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+  }
+  
+  .libro-tarjeta h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .libro-tarjeta p {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .libro-tarjeta img {
+    max-width: 200px;
+    height: 300px;
+    width: auto;
+    height: auto;
+    margin-top: 10px;
+  }
+
+  .card-img-top{
+    display: flex;
+    align-items: center;
+    max-width: 400px;
+    max-height: 400px;
+  }
+
+  /* Agrega un estilo de zoom al pasar el mouse sobre las tarjetas de libros */
+.card:hover {
+  transform: scale(1.05); /* Cambia el valor para ajustar el nivel de zoom */
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+/* Estilo para el enlace de la tarjeta de libro */
+.card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Agrega un estilo para centrar la imagen de la portada en la tarjeta */
+.card-img-top {
+  object-fit: cover; /* Ajusta el tamaño de la imagen para cubrir la tarjeta */ /* Ajusta la altura según tus necesidades */
+}
+
+/* Estilos adicionales según tus necesidades */
+
+  

@@ -6,6 +6,9 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './Login';
 import Home from './Home';
 import Inicio from './Inicio';
+import Libros from './Libros';
+import DetallesLibro from './DetalleInteraction';
+import Comentarios from './Comments';
 
 function App() {
   
@@ -16,6 +19,9 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/home' element={<Home />}></Route>
         <Route path='/inicio' element={<Inicio />}></Route>
+        <Route path='/libros' element={<Libros />}></Route>
+        <Route path='/libros/:_id' element={<DetallesLibro />}></Route>
+        <Route path='/comentarios' element={<Comentarios />}></Route> 
       </Routes>
     </BrowserRouter>
   )
