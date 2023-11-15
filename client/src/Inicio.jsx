@@ -17,8 +17,8 @@ const Inicio = () => {
           </ul>
         </div>
         <div className="acciones">
-          <button className="boton-link" onClick={() => window.location.href = '/registro'}>Registro</button>
-          <button className="boton-link" onClick={() => window.location.href = '/login'}>Iniciar Sesión</button>
+          <button className="boton-link" onClick={() => window.location.href = '/sign-up'}>Registro</button>
+          <button className="boton-link" onClick={() => window.location.href = '/sign-in'}>Iniciar Sesión</button>
         </div>
       </header>
       <main>
@@ -29,7 +29,7 @@ const Inicio = () => {
           <div className="descripcion-superpuesta">
             <h1>Bienvenido a tu red social de libros</h1>
             <p>Descubre un mundo de lectura y conecta con amantes de los libros como tú.</p>
-            <button className="boton-link" onClick={() => window.location.href = '/registro'}>Ingresar</button>
+            <button className="boton-link" onClick={() => window.location.href = '/libros'}>Explorar</button>
           </div>
         </div>
 

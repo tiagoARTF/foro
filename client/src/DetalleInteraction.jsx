@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './css/DetalleInteraction.css'; // Estilos CSS personalizados
+import CommentSection from "../src/components/CommentSection/CommentSection";
+import Navbar from './components/Navbar';
 
 
 function DetallesLibro() {
@@ -31,18 +33,7 @@ function DetallesLibro() {
 
   return (
     <div className="detalles-libro">
-      {/* Encabezado */}
-      <header className="header">
-        <div className="logo" style={{padding: '0px'}}>
-          <img src="../src/assets/logo.png" alt='logo' />
-        </div>
-        <div className="busqueda">
-          <input type="text" placeholder="Buscar libros" />
-        </div>
-        <div className="perfil" style={{width: '50px'}}>
-          <img src="../src/assets/person-circle.svg" alt="Perfil" />
-        </div>
-      </header>
+      <Navbar />
 
       {/* Cuerpo */}
       <div className="cuerpo d-flex justify-content-center">
@@ -59,24 +50,7 @@ function DetallesLibro() {
           <p><strong>Descripción del libro:</strong> {libro.descripcion}</p>
         </div>
 
-        {/* Comentarios */}
-        <div className="comentarios">
-          <div className='comentario'>
-            <div className='informacion-usuario'>
-              <img src='../src/assets/person-circle.svg' alt='Usuario'/>
-              <p className="nombre-usuario">Nombre de Usuario</p>
-              <p className="fecha-comentario">Fecha del Comentario</p>
-            </div>
-            <p className="texto-comentario">
-              Este es un comentario sobre el libro
-            </p>
-            <div className='opciones-comentario'>
-              <a href="#">Responder</a>
-              <a href="#">Votar arriba</a>
-              <a href="#">votar abajo</a>
-            </div>
-          </div>
-        </div>
+        <CommentSection _id={_id} />
       </div>
 
       {/* Botones de navegación */}
