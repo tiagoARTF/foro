@@ -1,49 +1,44 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './css/libros.css';
+import Navbar from './components/Navbar';
 
 function Libros() {
   const [libros, setLibros] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
-
   useEffect(() => {
-    // Realiza una solicitud GET a la API para obtener los libros cuando el componente se monta
-    fetch('http://localhost:3001/libros') // Asegúrate de usar la URL correcta
+    // Realiza una solicitud GET a la API para obtener todos los libros
+    fetch('http://localhost:3001/libros')
       .then((response) => response.json())
       .then((data) => {
-        setLibros(data); // Actualiza el estado con los libros obtenidos
+        setLibros(data);
       })
       .catch((error) => {
         console.error('Error al obtener los libros', error);
       });
-  }, []); // El segundo argumento vacío [] asegura que esto solo se ejecute una vez al montar el componente.
-
+  }, []);
 
   useEffect(() => {
-    const apiUrl = searchQuery ? `/libros/${searchQuery}` : '/libros/:query';
+    // Realiza una solicitud GET a la API para obtener los libros según el término de búsqueda
+    const apiUrl = searchQuery ? `http://localhost:3001/libros/buscar/${searchQuery}` : 'http://localhost:3001/libros';
 
     fetch(apiUrl)
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.text(); // Cambia a text para obtener la respuesta completa
-        })
-        .then((data) => {
-            //console.log('Datos recibidos del servidor:', data);
-            setLibros(JSON.parse(data)); // Intenta parsear la respuesta como JSON
-        })
-        .catch((error) => {
-            console.error('Error al obtener los libros:', error);
-        });
-}, [searchQuery]);
-
+      .then((response) => response.json())
+      .then((data) => {
+        setLibros(data);
+      })
+      .catch((error) => {
+        console.error('Error al obtener los libros:', error);
+      });
+  }, [searchQuery]);
 
   return (
-    <div className="container mt-4">
-      <h1 className="text-center p-3">Listado de Libros</h1>
-      <input
+    <div className='dd'>
+    <Navbar/>
+    <div className="container mt-4 p-5">
+      <h1 className="text-center p-5">Listado de Libros</h1>
+      <input className='p-2'
         type="text"
         placeholder="Buscar libros"
         value={searchQuery}
@@ -54,9 +49,8 @@ function Libros() {
           <p>No se encontraron resultados.</p>
         ) : (
           libros.map((libro) => (
-            <div key={libro._id} className="col-lg-3 col-mb-4 col-sm-6 mb-4">
+            <div key={libro._id} className="col-lg-3 col-mb-4 col-sm-6 mb-4 p-4">
               <Link to={`/libros/${libro._id}`} className="text-decoration-none">
-                {/* Envuelve todo el contenido de la tarjeta dentro del componente Link */}
                 <div className="card h-10 shadow">
                   <img
                     src={libro.portada}
@@ -67,7 +61,6 @@ function Libros() {
                     <h5 className="card-title">{libro.titulo}</h5>
                     <p className="card-text">Autor: {libro.autor}</p>
                     <p className="card-text">Año de Publicación: {libro.publicacion}</p>
-                    {/* Otros detalles del libro */}
                   </div>
                 </div>
               </Link>
@@ -76,8 +69,8 @@ function Libros() {
         )}
       </div>
     </div>
-);
-
+    </div>
+  );
 }
 
 export default Libros;

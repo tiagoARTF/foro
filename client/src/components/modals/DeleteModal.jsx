@@ -6,17 +6,16 @@ const DeleteModal = ({isOpen, close, onDelete}) => {
   return (
     <div className={isOpen ? "delete-modal show-modal" : "delete-modal"}>
       <div className='modal-content'>
-        <h3 className='modal-title'>Delete comment</h3>
+        <h3 className='modal-title'>Borrar comentario</h3>
         <p className='modal-message'>
-          Are you sure you want to delete this comment?This will remove the
-          comment and can't be undone.
+        ¿Está seguro de que desea eliminar este comentario? 
         </p>
         <div className='modal-controls'>
           <button className='cancel-btn' onClick={close}>
-            NO,CANCEL
+            NO,CANCELAR
           </button>
           <button className='delete-btn' onClick={onDelete}>
-            YES,DELETE
+            SI,ELIMINAR
           </button>
         </div>
       </div>

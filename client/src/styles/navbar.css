@@ -1,12 +1,13 @@
 .navbar {
     width: 100%;
-    border-bottom: 1px solid hsl(0, 0%, 90%);
+    border-bottom: 1px solid hsl(0, 10%, 92%);
     height: 60px;
     position: fixed;
     top: 0;
     z-index: 2;
     backdrop-filter: blur(6px);
-    background-color: hsl(228, 33%, 97%, 0.4);
+    background-color: hsla(228, 23%, 65%, 0.4);
+    height: 100px;
 }
 
 .navbar__wrapper {

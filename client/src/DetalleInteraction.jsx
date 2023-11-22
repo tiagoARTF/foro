@@ -4,6 +4,8 @@ import './css/DetalleInteraction.css'; // Estilos CSS personalizados
 import CommentSection from "../src/components/CommentSection/CommentSection";
 import Navbar from './components/Navbar';
 
+//import ClubDeLectura from '../src/components/clublectura';
+
 
 function DetallesLibro() {
   const { _id } = useParams();
@@ -51,6 +53,9 @@ function DetallesLibro() {
         </div>
 
         <CommentSection _id={_id} />
+        
+
+       
       </div>
 
       {/* Botones de navegación */}

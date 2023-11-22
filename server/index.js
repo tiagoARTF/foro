@@ -41,7 +41,7 @@ app.get('/libros/:id', (req, res) => {
       });
 });
 
-app.get('/libros/:query', (req, res) => {
+app.get('/libros/buscar/:query', (req, res) => {
   const query = req.params.query;
   
   LibroModel.find({ $or: [{ titulo: new RegExp(query, 'i') }, { autor: new RegExp(query, 'i') }] })
@@ -54,6 +54,7 @@ app.get('/libros/:query', (req, res) => {
           res.status(500).json({ error: 'Error del servidor al buscar libros', details: err });
       });
 });
+
 
 
 app.listen(3001, () => {
