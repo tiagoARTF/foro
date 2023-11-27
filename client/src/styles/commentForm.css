@@ -17,7 +17,7 @@
     font-size: 0.85rem;
     font-weight: 700;
     height: max-content;
-    background-color: hsl(238, 40%, 52%);
+    background-color: hsl(240, 39%, 63%);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -82,4 +82,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.nn{
+    background-color: #9682bf;
+}
+.nn:hover{
+    background-color: #673ebb;
 }

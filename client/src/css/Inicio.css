@@ -1,6 +1,8 @@
 /* Estilos para el encabezado */
 .header {
-  background-color: #62554cb3; /* Color de fondo con opacidad (en este caso, 70%) */
+  min-height: 75vh;
+  background: linear-gradient(rgba(141, 39, 174, 0.3), rgba(141, 39, 174, 0.5)), url("../assets/img/library-img.jpg") center/cover no-repeat;
+  flex-direction: column;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -32,8 +34,8 @@
   }
   
   /* Estilos para los botones */
-  .boton-link {
-    background-color: #142334; /* Color de fondo del botón */
+  .boton-link, .lis {
+    background-color: #0075fc; /* Color de fondo del botón */
     color: #fff; /* Color del texto */
     border: none; /* Elimina el borde */
     padding: 10px 20px; /* Espacio interno del botón */
@@ -42,8 +44,8 @@
     margin-right: 10px; /* Espacio entre los botones */
   }
   
-  .boton-link:hover {
-    background-color: #7d786e; /* Cambia el color de fondo al pasar el cursor */
+  .boton-link, .lis:hover {
+    background-color: #d89610; /* Cambia el color de fondo al pasar el cursor */
   }
   
   /* Estilos para las secciones */
@@ -72,62 +74,65 @@
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
   }
-  /* Estilos para la imagen principal */
+
 .imagen-principal {
     width: 100%;
-    max-height: 850px; /* Ajusta la altura según tus necesidades */
-    object-fit: cover; /* Ajusta el tamaño de la imagen para cubrir el contenedor */
-    filter: blur(3px); /* Aplica un efecto de desenfoque a la imagen */
-    opacity: 0.9; /* Opacidad de la imagen para hacerla oscura */
+    max-height: 850px; 
+    object-fit: cover; 
+    filter: blur(1.5px); 
+    opacity: 0.; 
     position: relative;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 
 /* Estilos para el contenido */
 .contenido {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    margin-top: 0px;
-    background-color: #cc783c;
+  padding: 60px;
+  background: linear-gradient(to bottom right, #6f08d6, #7c5c81);
 }
 
 .acerca-de {
     flex: 1;
-    padding: 20px;
-    background-color: #cc783c;
+    color: #fbfbfb;
+    padding: 50px;
+    background: linear-gradient(to bottom right, #6f08d6, #7c5c81);
     border-radius: 4px;
     font-size: 20px;
 }
 
 .acerca-de h2 {
   font-size: 36px; 
+  color: #fbfbfb;
 }
 
 .acerca-de p {
   font-size: 20px;
   margin-top: 42px; 
+  color: #fbfbfb;
 }
 
 
 .imagen-derecha {
-    flex: 1;
-    padding: 2px;
-    /*margin-right: -20px;*/
+    max-width: 100%;  
+    height: auto;     
+    display: block;   
+  
 }
 
 
 /* Estilos para la sección "Soporte" */
 .soporte {
   text-align: center;
-    margin-top: 10px;
-    padding: 20px;
-    background-color: #cc783c;
+    margin-top: -20px;
+    padding: 10px;
+    color: #fbfbfa;
+    background: linear-gradient(to bottom right, #6f08d6, #7c5c81);
     border-radius: 4px;
 }
 
 .soporte p {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    color: #fbfbfa;
 }
 
 .soporte a {
@@ -143,35 +148,42 @@
   transform: translate(-50%, -50%);
   text-align: center;
   color: #fff;
-  z-index: 2;
-  padding: 20px;
   border-radius: 5px;
+  margin: auto;
 }
 
 .descripcion-superpuesta h1 {
-  font-size: 84px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  margin-bottom: 10px;
+  font-size: 5rem;
+  
 }
 
 .descripcion-superpuesta p {
-  font-size: 26px;
-  margin-bottom: 20px;
+  font-size: 2rem;
   color: #fbfbfb;
   
 }
 
-.descripcion-superpuesta button {
-  background-color: #212f3f;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+.hh{
+  padding-top: 70px;
 }
 
 .descripcion-superpuesta button:hover {
-  background-color: #7d786e;
+  background-color: #fbfbfa;
 }
+
+@media screen and (max-width: 768px) { 
+  .descripcion-superpuesta p {
+    font-size: 20px; 
+    width: 100%; 
+  }
+  .descripcion-superpuesta h1{
+    font-size: 3.4rem;
+  }
+  .qq{
+    font-size: 20px;
+    margin-top: 20px;
+    width: 60%;
+  }
+}
+

@@ -21,7 +21,7 @@
   }
   
   .modal-control {
-    background-color: #339333;
+    background-color: #393393;
     color: white;
     padding: 10px;
     border: none;
@@ -29,7 +29,7 @@
   }
   
   .modal-control:hover {
-    background-color: #45a049;
+    background-color: #5745a0;
   }
   
   .club-list {
@@ -117,9 +117,120 @@
   
   .club-item {
     margin-bottom: 10px;
-    border: 1px solid #ccc; /* Agregado: Borde del cuadro */
-    border-radius: 6px; /* Agregado: Bordes redondeados */
-    padding: 10px; /* Agregado: Espaciado interno */
-    background-color: #fff; /* Agregado: Color de fondo */
+    border: 1px solid #ccc; 
+    border-radius: 6px; 
+    padding: 10px; 
+    background-color: #fff; 
   }
   
+  
+.club-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.club-item {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.club-item strong {
+  margin-right: 5px;
+}
+
+.club-item a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.club-item a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos generales */
+.container-club {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+
+.container-club button {
+  background-color: #4c4faf; 
+  color: white; 
+  padding: 5px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 10px;
+  border: 0;
+}
+
+.container-club button:hover {
+  background-color: #5a45a0; /* Cambia de color al pasar el ratón */
+}
+
+
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos del formulario de entrada */
+.label {
+  display: flex;
+  flex-direction: column;
+}
+
+.inpu {
+  margin: 8px 0;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.modal-control {
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.modal-control:hover {
+  background-color: #4845a0;
+}
+
+
+.club-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.club-item {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.club-item strong {
+  font-weight: bold;
+}
+
+
+.club-item a {
+  color: #1e90ff; 
+  text-decoration: none;
+}
+
+.club-item a:hover {
+  text-decoration: underline; 
+}
+

@@ -1,6 +1,6 @@
 .auth {
     min-height: 100vh;
-    background-color: hsl(228, 33%, 97%);
+    background: url(../assets/r.jpg)
 }
 
 .auth>.wrapper {
@@ -10,46 +10,49 @@
 }
 
 .auth-body {
-    background-color: hsl(0, 0%, 100%);
-    padding: 1rem;
+    background-color: hsl(0, 8%, 95%);
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 1px;
+    flex: 1;
+    height: 94%;
+    border-radius: 5px;
 }
 
 
 .banner {
+    height: auto;
+    border-radius: 8px;
+    padding-left: 115px;
+    width: 100%;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: -32px;
 }
+.banner img {
+    width: 160%;
+    height: 92%;
+    border-radius: 8px; /* O tu estilo de borde */
+    margin-bottom: 3%;
+  }
+  
 
-.circle {
-    width: 28%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background-color: hsl(257, 49%, 47%);
-}
 
-.overlay {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    bottom: 0;
-    z-index: 2;
-    background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
+
+
 
 .auth-form {
-    max-width: 340px;
+    max-width: 540px;
     width: 100%;
+    margin-left: 10%;
 }
 
 .auth-title {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 500;
     margin-bottom: 1rem;
     color: hsl(212, 24%, 26%);
@@ -65,7 +68,7 @@
 }
 
 .auth-desc {
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: hsl(211, 10%, 45%);
     margin-bottom: 1.5rem;
 }
@@ -187,11 +190,12 @@ button {
 }
 
 .back-btn {
-    width: 24px;
+    width: 34px;
     aspect-ratio: 1;
     border-radius: 4px;
+    color: antiquewhite;
+    background: blueviolet;
     border: 1px solid hsl(0, 0%, 90%);
-    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -200,6 +204,11 @@ button {
     left: 2rem;
     z-index: 4;
 }
+
+.back-btn:hover {
+    background: rgb(156, 95, 249);
+}
+
 
 .back-icon {
     color: hsl(212, 24%, 26%);
@@ -234,15 +243,17 @@ button {
 
     .auth-form {
         max-width: 100%;
+        margin-right: 10%;
+        margin-top: 7%;
     }
 
     .auth-title {
         text-align: center;
     }
 
-    .circle {
-        width: 48px;
-    }
+    .container {
+        flex-direction: row; /* Vuelve a la dirección de fila para pantallas más grandes */
+      }
 
     .back-btn {
         top: 1rem;
@@ -254,6 +265,14 @@ button {
         grid-row: 1;
         overflow: hidden;
         background-color: white;
+    }
+    .banner img {
+        
+        width: 170%;
+        height: 92%;
+        margin-right: 45%;
+        border-radius: 8px;
+        margin-bottom: 3%;
     }
 }
 

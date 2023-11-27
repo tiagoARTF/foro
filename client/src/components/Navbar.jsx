@@ -16,10 +16,10 @@ const Navbar = () => {
   };
 
   return (
-    <header className='navbar navbar-expand-lg navbar-dark bg-dark'>
+    <header className='navbar navbar-expand-lg navbar-dark'>
       <div className='navbar__wrapper container-fluid'>
         <img onClick={() => navigate('/')}
-            src="src/assets/logo.png"
+            src="https://i.ibb.co/vCFkSqn/logo.png"
             alt="Comentarios"
             width="100px"   
         />
@@ -27,9 +27,6 @@ const Navbar = () => {
           <ul className='nav__list navbar-nav me-auto mb-2 mb-lg-0'>
             {user ? (
               <>
-                <li className='nav-item'>
-                  <a className='nav-link' onClick={handleSignOut}>Cerrar Sesión</a>
-                </li>
                 <li className='nav-item user'>
                   {user.photoURL ? (
                     <img
@@ -43,20 +40,19 @@ const Navbar = () => {
                     user.name.charAt(0)
                   )}
                 </li>
+              
+
+                <li className='navv-item'>
+                  <a className='btn btn-outline-light' onClick={handleSignOut}>Cerrar Sesión</a>
+                </li>
               </>
             ) : (
               <>
-              <li className='nav-item'>
+              <li className='navv-item'>
                 <button className='btn btn-outline-light' onClick={() => navigate('/sign-in')}>
                     Iniciar Sesión
                 </button>
               </li>
-              <li className='nav-item'>
-                <button className='btn btn-outline-light' onClick={() => navigate('/sign-up')}>
-                    Registrarse
-                </button>
-              </li>
-
               </>
             )}
           </ul>

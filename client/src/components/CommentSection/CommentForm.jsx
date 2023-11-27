@@ -7,13 +7,14 @@ import AlertModal from "../modals/AlertModal";
 const CommentForm = ({onSubmit,isAlertOpen}) => {
     const {user} = useAuth();
     return (
-        <form className='comment__form' onSubmit={onSubmit}>
-            {" "}
-            {user ? (
+        <form className='comment-form container ' onSubmit={onSubmit}>
+    <div className='row align-items-center'>
+        {user ? (
+            <div className='col-md-2 col-2'>
                 <div className='user'>
                     {user.photoURL ? (
                         <img
-                            className='avatar'
+                            className='avatar img-fluid'
                             referrerPolicy='no-referrer'
                             title={user.email}
                             src={user.photoURL}
@@ -23,24 +24,31 @@ const CommentForm = ({onSubmit,isAlertOpen}) => {
                         user.email.charAt(0)
                     )}
                 </div>
-            ) : (
+            </div>
+        ) : (
+            <div className='col-md-1 col-2'>
                 <div className='no-user'>
                     <FcLock className='lock-icon' size='18px' />
                 </div>
-            )}
+            </div>
+        )}
+        <div className='col-md-6 col-5'>
             <textarea
-                className='input-text'
+                className='form-control input-text'
                 name='comment'
                 id='comment'
-                cols='20'
-                rows='3'
                 placeholder='Agrega tu comentario...'
+                rows='3'
             />
-            <button type='submit' className='send-btn' title='send comment'>
+        </div>
+        <div className='col-md-1 col-3 mt-2 mt-md-0'>
+            <button type='submit' className='nn btn btn-secondary send-btn' title='Enviar comentario'>
                 Enviar
             </button>
-            <AlertModal isOpen={isAlertOpen} />
-        </form>
+        </div>
+    </div>
+    <AlertModal isOpen={isAlertOpen} />
+</form>
     );
 };
 

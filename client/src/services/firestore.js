@@ -4,6 +4,11 @@ import { Timestamp, addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFire
 
 const db = getFirestore(app);
 
+/*export const commentsListenerForBooks = (_id, callback) => {
+    const commentsRef = collection(db, "comments");
+    const bookCommentsQuery = query(commentsRef, where("_id", "==", _id));
+    return listenToCollection(bookCommentsQuery, callback);
+};*/
 const listenToCollection = (collectionRef, callback) => {
     const collectionQuery = query(collectionRef, orderBy("createdAt", "desc"))
     const unsubscribe = onSnapshot(collectionQuery, (querySnapshot) => {
@@ -22,11 +27,6 @@ export const commentsListner = (callback) => {
     return listenToCollection(commentsRef, callback);
 };
 
-/*export const commentsListenerForBooks = (_id, callback) => {
-    const commentsRef = collection(db, "comments");
-    const bookCommentsQuery = query(commentsRef, where("_id", "==", _id));
-    return listenToCollection(bookCommentsQuery, callback);
-};*/
 
 export const repliesListner = (commentId, callback) => {
     const repliesRef = collection(db, "comments", commentId, "replies");

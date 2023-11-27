@@ -1,12 +1,14 @@
 import "../styles/auth.css";
 import React, {useState} from "react";
 import {FcGoogle} from "react-icons/fc";
+import { FaArrowLeft } from 'react-icons/fa';
 import {BarLoader} from "react-spinners";
-import {TiArrowBack} from "react-icons/ti";
+//import {TiArrowBack} from "react-icons/ti";
 import {login, signInWithGoogle} from "../services/firebase-auth";
 import {Link, useNavigate} from "react-router-dom";
 import {MdVisibilityOff, MdVisibility} from "react-icons/md";
 import RedirectRoute from "../components/RedirectRoute";
+import tuImagen from '../assets/dd.jpg';
 
 const SignIn = () => {
     const navigate = useNavigate();
@@ -42,11 +44,10 @@ const SignIn = () => {
             <section className='auth'>
                 <div className='wrapper'>
                     <button className='back-btn' onClick={() => navigate(-1)}>
-                        <TiArrowBack className='back-icon' />
+                        <FaArrowLeft className='back-icon' />
                     </button>
                     <div className='banner'>
-                        <div className='circle'></div>
-                        <div className='overlay'></div>
+                        <img src={tuImagen} alt='Descripción de la imagen' />
                     </div>
                     <div className='auth-body'>
                         <form className='auth-form' onSubmit={handleSubmit}>

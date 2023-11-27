@@ -57,21 +57,26 @@ const CommentList = ({ _id }) => {
     };
 
     return (
-        <ul className='comments__container'>
-            {comments.map((comment) => (
-                <Fragment key={comment.id}>
-                    <Comment
-                        comment={comment}
-                        type='comment'
-                        onDelete={onDelete}
-                        onEdit={onEdit}
-                        upvote={upvote}
-                        downvote={downvote}
-                    />
-                    <ReplyList commentID={comment.id} />
-                </Fragment>
-            ))}
-        </ul>
+        <ul className=' container mt-3'>
+    {comments.map((comment) => (
+        <Fragment key={comment.id}>
+            
+                <Comment
+                    comment={comment}
+                    type='comment'
+                    onDelete={onDelete}
+                    onEdit={onEdit}
+                    upvote={upvote}
+                    downvote={downvote}
+                />
+            
+            <li className='list-group-item'>
+                <ReplyList commentID={comment.id} />
+            </li>
+        </Fragment>
+    ))}
+</ul>
+
     );
 };
 

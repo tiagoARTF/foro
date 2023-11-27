@@ -4,9 +4,10 @@
     height: 60px;
     position: fixed;
     top: 0;
+    padding: 0;
     z-index: 2;
     backdrop-filter: blur(6px);
-    background-color: hsla(228, 23%, 65%, 0.4);
+    background: linear-gradient(to bottom right, #6f08d6, #7c5c81);
     height: 100px;
 }
 
@@ -73,3 +74,23 @@
 .user:has(.avatar) {
     object-fit: cover;
 }
+
+
+  
+  
+  @media (max-width: 768px) {
+    .nav__list {
+      flex-direction: row; 
+      justify-content: flex-end; 
+    }
+
+
+    .user,
+    .navv-item {
+      margin: 0;
+    }
+  
+    .navv-item {
+      margin-left: 10px; 
+    }
+  }

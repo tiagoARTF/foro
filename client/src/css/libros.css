@@ -11,11 +11,15 @@
   .libro-tarjeta h2 {
     font-size: 24px;
     margin-bottom: 10px;
+    
   }
   
   .libro-tarjeta p {
     font-size: 16px;
     color: #333;
+  }
+  .l{
+    color: #ccc;
   }
   
   .libro-tarjeta img {
@@ -33,24 +37,82 @@
     max-height: 400px;
   }
 
-  /* Agrega un estilo de zoom al pasar el mouse sobre las tarjetas de libros */
 .card:hover {
-  transform: scale(1.05); /* Cambia el valor para ajustar el nivel de zoom */
+  transform: scale(1.05); 
   transition: transform 0.2s ease-in-out;
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  cursor: pointer; 
 }
 
-/* Estilo para el enlace de la tarjeta de libro */
 .card a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Agrega un estilo para centrar la imagen de la portada en la tarjeta */
+
 .card-img-top {
-  object-fit: cover; /* Ajusta el tamaño de la imagen para cubrir la tarjeta */ /* Ajusta la altura según tus necesidades */
+  object-fit: cover; 
 }
 
-/* Estilos adicionales según tus necesidades */
+/* Agrega estos estilos a tu archivo CSS o SCSS */
+
+.container {
+  max-width: 1140px; /* Ajusta el ancho máximo según tus necesidades */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.l {
+  font-size: 2rem; /* Ajusta el tamaño de fuente según tus necesidades */
+}
+
+/* Estilos para el input de búsqueda */
+input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Estilos para las tarjetas de libros */
+.card {
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Estilos para la imagen dentro de la tarjeta */
+.card-img-top {
+  object-fit: cover;
+}
+
+/* Estilos para el título de la tarjeta */
+.card-title {
+  font-size: 1.5rem; /* Ajusta el tamaño de fuente según tus necesidades */
+  font-weight: bold;
+}
+
+/* Estilos para el texto de la tarjeta */
+.card-text {
+  font-size: 1rem; /* Ajusta el tamaño de fuente según tus necesidades */
+}
+
+/* Estilos para el contenedor principal */
+.grid {
+  display: grid;
+}
+
+/* Estilos para las columnas en pantallas medianas */
+@media (min-width: 768px) {
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+}
+
+
+
 
   

@@ -36,39 +36,43 @@ function Libros() {
   return (
     <div className='dd'>
     <Navbar/>
-    <div className="container mt-4 p-5">
-      <h1 className="text-center p-5">Listado de Libros</h1>
-      <input className='p-2'
-        type="text"
-        placeholder="Buscar libros"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <div className="row row-cols-1 row-cols-md-3">
-        {libros.length === 0 ? (
-          <p>No se encontraron resultados.</p>
-        ) : (
-          libros.map((libro) => (
-            <div key={libro._id} className="col-lg-3 col-mb-4 col-sm-6 mb-4 p-4">
-              <Link to={`/libros/${libro._id}`} className="text-decoration-none">
-                <div className="card h-10 shadow">
-                  <img
-                    src={libro.portada}
-                    className="card-img-top d-flex align-items-center justify-content-center img-fluid"
-                    alt={`Portada de ${libro.titulo}`}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{libro.titulo}</h5>
-                    <p className="card-text">Autor: {libro.autor}</p>
-                    <p className="card-text">Año de Publicación: {libro.publicacion}</p>
-                  </div>
-                </div>
-              </Link>
+    <div className="container mx-auto mt-5 p-5 bg-white rounded-md shadow-md">
+  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8">
+    Encuentra Tu Lectura Perfecta
+  </h1>
+  <input
+    className="w-full p-3 border rounded-md mb-4"
+    type="text"
+    placeholder="Buscar libro"
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+  />
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    {libros.length === 0 ? (
+      <p className="col-span-3 text-center">No se encontraron resultados.</p>
+    ) : (
+      libros.map((libro) => (
+        <div key={libro._id} className="w-full md:w-1/3 p-4">
+          <Link to={`/libros/${libro._id}`} className="text-decoration-none">
+            <div className="card h-96 shadow">
+              <img
+                src={libro.portada}
+                className="card-img-top object-cover h-64 w-full"
+                alt={`Portada de ${libro.titulo}`}
+              />
+              <div className="card-body">
+                <h5 className="card-title">{libro.titulo}</h5>
+                <p className="card-text">Autor: {libro.autor}</p>
+                <p className="card-text">Año de Publicación: {libro.publicacion}</p>
+              </div>
             </div>
-          ))
-        )}
-      </div>
-    </div>
+          </Link>
+        </div>
+      ))
+    )}
+  </div>
+</div>
+
     </div>
   );
 }

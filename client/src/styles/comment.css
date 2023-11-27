@@ -22,6 +22,11 @@
     color: hsl(238, 40%, 52%);
 }
 
+
+
+
+
+
 .score__button {
     border: none;
     background-color: transparent;
@@ -187,4 +192,48 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+@media screen and (max-width: 168px) {
+    .user__info {
+        gap: 0.25rem;
+    }
+
+    .comment__body {
+        gap: 0.25rem;
+    }
+
+    .comment {
+        padding: 0.75rem;
+        flex-direction: column-reverse;
+        gap: 0.25rem;
+    }
+
+    .comment__controls {
+        top: calc(100% - 1.5rem);
+        right: 0.75rem;
+    }
+
+    .score__container {
+        width: min-content;
+        padding-inline: 1.5rem;
+        gap: 0.25rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .score {
+        font-size: 10px; /* Ajusta el tamaño de la fuente */
+    }
+
+    .is-you {
+        font-size: 10px; /* Ajusta el tamaño de la fuente */
+        padding: 0.1rem 0.25rem;
+    }
+
+    .created-at {
+        font-size: 0.75rem; /* Ajusta el tamaño de la fuente */
+    }
 }

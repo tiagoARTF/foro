@@ -6,11 +6,15 @@ import Delete from "../../assets/images/icon-delete.svg";
 import Edit from "../../assets/images/icon-edit.svg";
 import "../../styles/comment.css";
 import * as timeago from "timeago.js";
+import es from "timeago.js/lib/lang/es";
 import useAuth from "../../hooks/useAuth";
 import DeleteModal from "../modals/DeleteModal";
 import ReplyForm from "./ReplyForm";
 import {addReply} from "../../services/firestore";
 import AlertModal from "../modals/AlertModal";
+
+timeago.register("es", es);
+timeago.register("es_ES", es);
 
 const Comment = ({comment, type, onDelete, onEdit, upvote, downvote, parentID}) => {
     const {user} = useAuth();
@@ -121,10 +125,10 @@ const Comment = ({comment, type, onDelete, onEdit, upvote, downvote, parentID}) 
                         <h3 className='user-name'>{comment.user.name}</h3>
                         {comment.user.name === user?.name && (
                             <div className='is-you'>
-                                <p>you</p>
+                                <p>Tú</p>
                             </div>
                         )}
-                        <span className='created-at'>{timeago.format(comment.createdAt.seconds * 1000)}</span>
+                        <span className='created-at'>{timeago.format(comment.createdAt.seconds * 1000, 'es_ES')}</span>
                     </div>
                     {isEditing ? (
                         <form className='edit-form' onSubmit={editComment}>
@@ -137,7 +141,7 @@ const Comment = ({comment, type, onDelete, onEdit, upvote, downvote, parentID}) 
                                 defaultValue={comment.content}
                             />
                             <button type='submit' className='edit-btn'>
-                                UPDATE
+                                Actualizar
                             </button>
                         </form>
                     ) : (
@@ -150,16 +154,16 @@ const Comment = ({comment, type, onDelete, onEdit, upvote, downvote, parentID}) 
                     <div className='comment__controls'>
                         {comment.user.name === user?.name && (
                             <button className='comment__control delete' onClick={openDeleteModal}>
-                                <img src={Delete} alt='delete-icon' /> Delete
+                                <img src={Delete} alt='delete-icon' /> Eliminar
                             </button>
                         )}
                         {comment.user.name === user?.name ? (
                             <button className='comment__control edit' onClick={handleEdit}>
-                                <img src={Edit} alt='edit-icon' /> Edit
+                                <img src={Edit} alt='edit-icon' /> Editar
                             </button>
                         ) : (
                             <button className='comment__control reply' onClick={handleReply}>
-                                <img src={Reply} alt='reply-icon' /> Reply
+                                <img src={Reply} alt='reply-icon' /> Responder
                             </button>
                         )}
                     </div>
