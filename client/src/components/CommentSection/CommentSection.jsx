@@ -36,14 +36,14 @@ const CommentSection = ({ _id }) => {
 
   const [comments, setComments] = useState([]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const fetchComments = async () => {
       const bookComments = await getCommentsByBookId(_id);
       setComments(bookComments);
     };
 
     fetchComments();
-  }, [_id]);
+  }, [_id]);*/
 
 
   return (

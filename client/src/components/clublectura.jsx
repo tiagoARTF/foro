@@ -13,6 +13,7 @@ const FormularioClubLectura = ({ _id }) => {
   const [clubs, setClubs] = useState([]);
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   const [mostrarAlerta, setMostrarAlerta] = useState(false);
+  const [tiempoOcultarAlerta, setTiempoOcultarAlerta] = useState(null);
 
   const { user } = useAuth(); // Asegúrate de tener acceso al contexto de autenticación
 
@@ -28,15 +29,36 @@ const FormularioClubLectura = ({ _id }) => {
   const handleMostrarFormulario = () => {
     if (user) {
       setMostrarFormulario(true);
+      setMostrarAlerta(false);
     } else {
       setMostrarAlerta(true);
+    const timeoutId = setTimeout(() => {
+      setMostrarAlerta(false);
+    }, 3000);
+
+    setTiempoOcultarAlerta(timeoutId);
+  }
+};
+
+useEffect(() => {
+  return () => {
+    if (tiempoOcultarAlerta) {
+      clearTimeout(tiempoOcultarAlerta);
     }
   };
+}, [mostrarAlerta, tiempoOcultarAlerta]);
+    
+  
+
+  
+
 
   const handleOcultarFormulario = () => {
     setMostrarFormulario(false);
     setMostrarAlerta(false);
   };
+
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,29 +73,30 @@ const FormularioClubLectura = ({ _id }) => {
     handleOcultarFormulario();
   };
 
-  return (
-    <div className="container-club">
-      <button onClick={handleMostrarFormulario}>+</button>
-      {mostrarFormulario && (
-        <div className="alert-modal show-modal">
-          <div className="modal-content">
-            <form className="label" onSubmit={handleSubmit}>
-              {/* ... (resto del formulario) */}
-              <button type="submit" className="modal-control">
-                Crear Club
-              </button>
-              <button
-                type="button"
-                className="modal-control"
-                onClick={handleOcultarFormulario}
-              >
-                Cancelar
-              </button>
-            </form>
-          </div>
+
+return (
+  <div className="container-club">
+    <button onClick={handleMostrarFormulario}>+</button>
+    {mostrarFormulario && (
+      <div className="alert-modal show-modal">
+        <div className="modal-content">
+          <form className="label" onSubmit={handleSubmit}>
+            {/* ... (resto del formulario) */}
+            <button type="submit" className="modal-control">
+              Crear Club
+            </button>
+            <button
+              type="button"
+              className="modal-control"
+              onClick={handleOcultarFormulario}
+            >
+              Cancelar
+            </button>
+          </form>
         </div>
-      )}
-      {mostrarAlerta && <AlertModal />}
+      </div>
+    )}
+    <AlertModal isOpen={mostrarAlerta} />
       {/* Mostrar la lista de clubs */}
       <ul className="club-list">
         {clubs.map((club, index) => (
