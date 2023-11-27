@@ -1,6 +1,7 @@
 import { app } from './firebase.js'
 
-import { Timestamp, addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFirestore, onSnapshot, orderBy, query, updateDoc, where } from "firebase/firestore";
+import { Timestamp, addDoc, collection, deleteDoc, doc, getDoc, getDocs, onSnapshot, getFirestore, orderBy, query, updateDoc, where } from "firebase/firestore";
+
 
 const db = getFirestore(app);
 
@@ -21,11 +22,23 @@ const listenToCollection = (collectionRef, callback) => {
     return unsubscribe;
 };
 
+export const commentsListner = (_id, callback) => {
+    const commentsRef = collection(db, "comments");
+    const commentsQuery = query(commentsRef, where("_id", "==", _id));
 
-export const commentsListner = (callback) => {
+    return onSnapshot(commentsQuery, (snapshot) => {
+        const comments = [];
+        snapshot.forEach((doc) => {
+            comments.push({ ...doc.data(), id: doc.id });
+        });
+        callback(comments);
+    });
+};
+
+/*export const commentsListner = (callback) => {
     const commentsRef = collection(db, "comments");
     return listenToCollection(commentsRef, callback);
-};
+};*/
 
 
 export const repliesListner = (commentId, callback) => {
@@ -108,7 +121,7 @@ export const downvoteReply = async (commentId, replyId, name) => {
     await updateScoreArray(commentRef, name, false);
 }
 
-export const getCommentsByBookId = async (_id) => {
+/*export const getCommentsByBookId = async (_id) => {
     try {
         const commentsRef = collection(db, "comments");
         const q = query(commentsRef, where("_id", "==", _id));
@@ -124,6 +137,6 @@ export const getCommentsByBookId = async (_id) => {
         console.error("Error fetching comments:", error);
         return [];
     }
-};
+};*/
 
 

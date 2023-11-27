@@ -3,20 +3,13 @@ import CommentSection from "./CommentSection";
 import ReplyList from "./ReplyList";
 import useAuth from "../../hooks/useAuth";
 import React, { Fragment, useEffect, useState } from "react";
-import { getCommentsByBookId, deleteComment, editComment, upvoteComment, downvoteComment, commentsListner } from "../../services/firestore";
+import {  deleteComment, editComment, upvoteComment, downvoteComment, commentsListner } from "../../services/firestore";
 
 const CommentList = ({ _id }) => {
     const [comments, setComments] = useState([]);
     const { user } = useAuth();
 
-    useEffect(() => {
-          const fetchComments = async () => {
-            const bookComments = await getCommentsByBookId(_id);
-            setComments(bookComments);
-          };
-          fetchComments();
-        
-      }, [_id]);
+    
       
 
       /*useEffect(() => {
@@ -32,6 +25,13 @@ const CommentList = ({ _id }) => {
             unsubscribe();
         };
     }, []);*/
+
+    useEffect(() => {
+        const unsubscribe = commentsListner(_id, setComments);
+        return () => {
+            unsubscribe();
+        };
+    }, [_id]);
     
 
    

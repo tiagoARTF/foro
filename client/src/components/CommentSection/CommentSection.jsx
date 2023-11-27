@@ -3,7 +3,7 @@ import "../../styles/commentSection.css";
 import CommentList from "./CommentList";
 import CommentForm from "./CommentForm";
 import FormularioClubLectura from "../clublectura";
-import { sendComment, getCommentsByBookId } from "../../services/firestore";
+import { sendComment } from "../../services/firestore";
 import useAuth from "../../hooks/useAuth";
 
 const CommentSection = ({ _id }) => {
