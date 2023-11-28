@@ -1,6 +1,6 @@
-import '../styles/formen.css'; 
+import '../styles/formen.css';
 import { useState, useEffect } from 'react';
-import { db } from '../services/firebase'; 
+import { db } from '../services/firebase';
 import { collection, addDoc, onSnapshot, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import useAuth from "../hooks/useAuth";
 import AlertModal from "./modals/AlertModal";
@@ -85,7 +85,7 @@ const FormularioClubLectura = ({ _id }) => {
 
   const handleEditarClub = (clubId) => {
     const clubToEdit = clubs.find((club) => club.id === clubId);
-    if (clubToEdit) {
+    if (clubToEdit && user && clubToEdit.creadorId === user.uid) {
       setNombre(clubToEdit.nombre || '');
       setLinkDiscord(clubToEdit.linkDiscord || '');
       setFechaReunion(clubToEdit.fechaReunion || '');
@@ -98,7 +98,13 @@ const FormularioClubLectura = ({ _id }) => {
   };
 
   const handleEliminarClub = async (clubId) => {
-    await deleteDoc(doc(db, `clubs/${_id}/clubs`, clubId));
+    // Verificar si el usuario actual es el creador antes de permitir la eliminación
+    const clubToDelete = clubs.find((club) => club.id === clubId);
+    if (clubToDelete && user && clubToDelete.creadorId === user.uid) {
+      await deleteDoc(doc(db, `clubs/${_id}/clubs`, clubId));
+    } else {
+      console.log('No tienes permisos para eliminar este formulario.');
+    }
   };
 
   return (
@@ -155,8 +161,12 @@ const FormularioClubLectura = ({ _id }) => {
               </a>
             )}, <br/><strong>Dia:</strong> {club.fechaReunion}
                 <strong> Hora:</strong> {club.horaReunion}
-            <button className='formbt' onClick={() => handleEditarClub(club.id)}>Editar</button>
-            <button className='formbt' onClick={() => handleEliminarClub(club.id)}>Eliminar</button>
+            {user && club.creadorId === user.uid && (
+              <>
+                <button className='formbt' onClick={() => handleEditarClub(club.id)}>Editar</button>
+                <button className='formbt' onClick={() => handleEliminarClub(club.id)}>Eliminar</button>
+              </>
+            )}
           </li>
         ))}
       </ul>
