@@ -1,9 +1,13 @@
+
+const path = require("path");
 const express = require("express");
 const mongoose = require('mongoose');
 const cors = require("cors");
 const { LibroModel } = require('./models/Employee');
 
+
 const app = express();
+
 app.use(express.json());
 app.use(cors());
 
@@ -62,37 +66,4 @@ app.listen(3001, () => {
 });
 
   
-  // Backend (Node.js)
-
-
-/*app.post('/login', (req, res) => {
-  const { email, password } = req.body;
-  EmployeeModel.findOne({ email: email })
-    .then(user => {
-      if (user) {
-        if (user.password === password) {
-          // Crear automáticamente un perfil de usuario con el nombre de usuario
-          const userProfile = new UserProfileModel({
-            username: user.name, // O el campo que contiene el nombre de usuario
-            // Otros campos del perfil
-          });
-          userProfile.save()
-            .then(() => {
-              res.json("Exitoso");
-            })
-            .catch(err => {
-              console.error('Error al crear el perfil del usuario', err);
-              res.json("Error al crear el perfil del usuario");
-            });
-        } else {
-          res.json("La contraseña es incorrecta");
-        }
-      } else {
-        res.json("No existe ningún registro");
-      }
-    })
-    .catch(error => {
-      console.error('Error al iniciar sesión', error);
-      res.json("Error al iniciar sesión");
-    });
-});*/
+ 
