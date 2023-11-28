@@ -70,6 +70,7 @@ function DetallesLibro() {
         </div>
 
         <CommentSection _id={_id} />
+       
         
         
       </div>

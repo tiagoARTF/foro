@@ -1,7 +1,9 @@
 import '../styles/formen.css'; 
 import { useState, useEffect } from 'react';
 import { db } from '../services/firebase'; 
-import { collection, getDocs, addDoc, query, onSnapshot, doc } from 'firebase/firestore';
+import { collection, addDoc, onSnapshot, deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import useAuth from "../hooks/useAuth";
+import AlertModal from "./modals/AlertModal";
 
 const FormularioClubLectura = ({ _id }) => {
   const [nombre, setNombre] = useState('');
@@ -10,41 +12,93 @@ const FormularioClubLectura = ({ _id }) => {
   const [horaReunion, setHoraReunion] = useState('');
   const [clubs, setClubs] = useState([]);
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [mostrarAlerta, setMostrarAlerta] = useState(false);
+  const [tiempoOcultarAlerta, setTiempoOcultarAlerta] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingClubId, setEditingClubId] = useState(null);
+
+  const { user } = useAuth();
 
   useEffect(() => {
-    // Obtén la referencia a la colección de clubs en Firestore específica para el libro (_id)
     const clubsCollection = collection(db, `clubs/${_id}/clubs`);
-
-    // Escucha cambios en la base de datos y actualiza el estado cuando sea necesario
     const unsubscribe = onSnapshot(clubsCollection, (snapshot) => {
-      const data = snapshot.docs.map((doc) => doc.data());
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setClubs(data);
     });
-
-    // Limpia los oyentes de Firestore cuando el componente se desmonta
     return () => unsubscribe();
   }, [_id]);
 
   const handleMostrarFormulario = () => {
-    setMostrarFormulario(true);
+    if (user) {
+      setMostrarFormulario(true);
+      setMostrarAlerta(false);
+    } else {
+      setMostrarAlerta(true);
+      const timeoutId = setTimeout(() => {
+        setMostrarAlerta(false);
+      }, 3000);
+
+      setTiempoOcultarAlerta(timeoutId);
+    }
   };
+
+  useEffect(() => {
+    return () => {
+      if (tiempoOcultarAlerta) {
+        clearTimeout(tiempoOcultarAlerta);
+      }
+    };
+  }, [mostrarAlerta, tiempoOcultarAlerta]);
 
   const handleOcultarFormulario = () => {
     setMostrarFormulario(false);
+    setMostrarAlerta(false);
+    setIsEditing(false);
+    setEditingClubId(null);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const nuevoClub = { nombre, linkDiscord, fechaReunion, horaReunion };
-
-    // Agrega el nuevo club a la colección de Firestore específica para el libro (_id)
-    await addDoc(collection(db, `clubs/${_id}/clubs`), nuevoClub);
+    if (isEditing && editingClubId) {
+      // Lógica para editar el club
+      await updateClub(editingClubId, { nombre, linkDiscord, fechaReunion, horaReunion });
+    } else {
+      // Lógica para agregar un nuevo club
+      await addClub({ nombre, linkDiscord, fechaReunion, horaReunion });
+    }
 
     setNombre('');
     setLinkDiscord('');
     setFechaReunion('');
     setHoraReunion('');
     handleOcultarFormulario();
+  };
+
+  const addClub = async (nuevoClub) => {
+    await addDoc(collection(db, `clubs/${_id}/clubs`), nuevoClub);
+  };
+
+  const updateClub = async (clubId, updatedClub) => {
+    const clubRef = doc(db, `clubs/${_id}/clubs`, clubId);
+    await updateDoc(clubRef, updatedClub, { merge: true });
+  };
+
+  const handleEditarClub = (clubId) => {
+    const clubToEdit = clubs.find((club) => club.id === clubId);
+    if (clubToEdit) {
+      setNombre(clubToEdit.nombre || '');
+      setLinkDiscord(clubToEdit.linkDiscord || '');
+      setFechaReunion(clubToEdit.fechaReunion || '');
+      setHoraReunion(clubToEdit.horaReunion || '');
+
+      setIsEditing(true);
+      setEditingClubId(clubId);
+      setMostrarFormulario(true);
+    }
+  };
+
+  const handleEliminarClub = async (clubId) => {
+    await deleteDoc(doc(db, `clubs/${_id}/clubs`, clubId));
   };
 
   return (
@@ -78,16 +132,21 @@ const FormularioClubLectura = ({ _id }) => {
                 Hora de Reunión:
                 <input className='inpu' type="time" value={horaReunion} onChange={(e) => setHoraReunion(e.target.value)} />
               </label>
-              <button type="submit" className="modal-control">Crear Club</button>
-              <button type="button" className='modal-control' onClick={handleOcultarFormulario}>Cancelar</button>
+              <button type="submit" className="modal-control">
+                {isEditing ? "Editar Club" : "Crear Club"}
+              </button>
+              <button type="button" className='modal-control' onClick={handleOcultarFormulario}>
+                Cancelar
+              </button>
             </form>
           </div>
         </div>
       )}
+      <AlertModal isOpen={mostrarAlerta} />
       {/* Mostrar la lista de clubs */}
       <ul className="club-list">
-        {clubs.map((club, index) => (
-          <li key={index} className="club-item">
+        {clubs.map((club) => (
+          <li key={club.id} className="club-item">
             <strong>Nombre:</strong> {club.nombre},{' '}
             <br/><strong>Link:</strong>{' '}
             {club.linkDiscord && (
@@ -96,6 +155,8 @@ const FormularioClubLectura = ({ _id }) => {
               </a>
             )}, <br/><strong>Dia:</strong> {club.fechaReunion}
                 <strong> Hora:</strong> {club.horaReunion}
+            <button className='formbt' onClick={() => handleEditarClub(club.id)}>Editar</button>
+            <button className='formbt' onClick={() => handleEliminarClub(club.id)}>Eliminar</button>
           </li>
         ))}
       </ul>

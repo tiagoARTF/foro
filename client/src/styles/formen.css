@@ -234,3 +234,13 @@
   text-decoration: underline; 
 }
 
+.formbt{
+  color: white; 
+  padding: 5px 10px !important; 
+  margin-right: 5px; 
+  margin-bottom: 5px;
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  outline: none ; 
+}
