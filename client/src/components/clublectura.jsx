@@ -151,25 +151,25 @@ const FormularioClubLectura = ({ _id }) => {
       <AlertModal isOpen={mostrarAlerta} />
       {/* Mostrar la lista de clubs */}
       <ul className="club-list">
-        {clubs.map((club) => (
-          <li key={club.id} className="club-item">
-            <strong>Nombre:</strong> {club.nombre},{' '}
-            <br/><strong>Link:</strong>{' '}
-            {club.linkDiscord && (
-              <a href={club.linkDiscord} target="_blank" rel="noopener noreferrer">
-                {club.linkDiscord}
-              </a>
-            )}, <br/><strong>Dia:</strong> {club.fechaReunion}
-                <strong> Hora:</strong> {club.horaReunion}
-            {user && club.creadorId === user.uid && (
-              <>
-                <button className='formbt' onClick={() => handleEditarClub(club.id)}>Editar</button>
-                <button className='formbt' onClick={() => handleEliminarClub(club.id)}>Eliminar</button>
-              </>
-            )}
-          </li>
-        ))}
-      </ul>
+  {clubs.map((club) => (
+    <li key={club.id} className="club-item">
+      <strong>Nombre:</strong> {club.nombre},{' '}
+      <br/><strong>Link:</strong>{' '}
+      {club.linkDiscord && (
+        <a href={club.linkDiscord} target="_blank" rel="noopener noreferrer">
+          {club.linkDiscord}
+        </a>
+      )}, <br/><strong>Dia:</strong> {club.fechaReunion}
+      <strong> Hora:</strong> {club.horaReunion}
+      {user && club.creadorId === user.uid && (
+        <>
+          <button className='formbt' onClick={() => handleEditarClub(club.id)}>Editar</button>
+          <button className='formbt' onClick={() => handleEliminarClub(club.id)}>Eliminar</button>
+        </>
+      )}
+    </li>
+  ))}
+</ul>
     </div>
   );
 };

@@ -39,7 +39,7 @@ const ReplyForm = ({onSubmit,replyingTo}) => {
                 defaultValue={`@${replyingTo} `}
             />
             <button type='submit' className='send-btn' title='send comment'>
-                REPLY
+                Responder
             </button>
         </form>
     );
