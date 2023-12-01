@@ -13,8 +13,10 @@
   "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js",
-    "client" : "cd client && npm install",
-    "server" : "npm start"
+    "client": "cd client && npm install",
+    "server": "npm start",
+    "build": "cd client && npm run build",
+    "railway-start": "cd client && npm install && npm run build && cd .. && npm start"
   },
   "keywords": [],
   "author": "",
