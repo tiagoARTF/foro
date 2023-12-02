@@ -185,7 +185,7 @@ button {
     align-items: center;
     justify-content: center;
     gap: 0.25rem;
-    color: hsl(212, 24%, 26%);
+    color: #fff;
     margin-bottom: 1rem;
 }
 
@@ -211,7 +211,7 @@ button {
 
 
 .back-icon {
-    color: hsl(212, 24%, 26%);
+    color: #fff;
     font-size: 1rem;
 }
 

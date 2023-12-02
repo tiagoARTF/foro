@@ -31,7 +31,6 @@
   width: 30px;
 }
 
-/* Estilos para el cuerpo de la página */
 .cuerpo {
   display: flex;
   margin: 20px;
@@ -40,10 +39,10 @@
   border-radius: 4px;
 }
 
-/* Estilos para la portada */
+
 .portada {
-  flex: 100%; /* Ocupa el 100% del ancho del cuerpo en teléfonos */
-  margin-bottom: 20px; /* Espaciado entre la portada y los detalles del libro */
+  flex: 100%;
+  margin-bottom: 20px; 
 }
 
 .portada img {
@@ -52,9 +51,9 @@
   border-radius: 4px;
 }
 
-/* Estilos para los detalles del libro */
+
 .detalles {
-  flex: 100%; /* Ocupa el 100% del ancho del cuerpo en teléfonos */
+  flex: 100%; 
 }
 
 .detalles h1 {
@@ -69,7 +68,7 @@
 }
 
 .comentarios {
-  flex: 100%; /* Ocupa el 100% del ancho del cuerpo en teléfonos */
+  flex: 100%; 
 }
 
 

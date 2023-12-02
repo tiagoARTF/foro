@@ -34,7 +34,7 @@ const SignUp = () => {
         const res = await signup(email.value, password.value);
         setLoading(false);
         if (res.user) {
-            navigate("/");
+            navigate("/libros");
         } else {
             setError(res);
         }

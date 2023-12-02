@@ -36,17 +36,28 @@ function Libros() {
   return (
     <div className='dd'>
     <Navbar/>
-    <div className="container mx-auto mt-5 p-5 bg-white rounded-md shadow-md">
-  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8">
-    Encuentra Tu Lectura Perfecta
-  </h1>
+    <div className='header-content flex flex-c text-center text-white'>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+        <h1 className='header-title text-capitalize'>Encuentra Tu Lectura Perfecta</h1>
+                
   <input
-    className="w-full p-3 border rounded-md mb-4"
+    className="ll w-full p-3 border rounded-md mb-4 bg-gray-50 border border-gray-300 text-sm w-full indent-2 p-2.5 outline-none focus:border-blue-500 focus:ring-2 rounded-tl rounded-bl"
     type="text"
     placeholder="Buscar libro"
     value={searchQuery}
     onChange={(e) => setSearchQuery(e.target.value)}
   />
+</div>
+    <div className="container mx-auto mt-5 p-5  rounded shadow-md">
+
   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
     {libros.length === 0 ? (
       <p className="col-span-3 text-center">No se encontraron resultados.</p>

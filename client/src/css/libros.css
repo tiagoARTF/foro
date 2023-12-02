@@ -53,25 +53,33 @@
   object-fit: cover; 
 }
 
-/* Agrega estos estilos a tu archivo CSS o SCSS */
+
 
 .container {
-  max-width: 1140px; /* Ajusta el ancho máximo según tus necesidades */
+  max-width: 1140px; 
   margin-left: auto;
   margin-right: auto;
+  background: rgb(236, 232, 232) ;
+  
+}
+
+.container-search{
+  max-width: 1140px; 
+  margin-left: auto;
+  margin-right: auto;
+  background: url(../assets/l.jpg);
 }
 
 .l {
-  font-size: 2rem; /* Ajusta el tamaño de fuente según tus necesidades */
+  font-size: 2rem; 
 }
 
-/* Estilos para el input de búsqueda */
+
 input {
   width: 100%;
   box-sizing: border-box;
 }
 
-/* Estilos para las tarjetas de libros */
 .card {
   transition: transform 0.2s;
 }
@@ -80,28 +88,28 @@ input {
   transform: scale(1.05);
 }
 
-/* Estilos para la imagen dentro de la tarjeta */
+
 .card-img-top {
   object-fit: cover;
 }
 
-/* Estilos para el título de la tarjeta */
+
 .card-title {
-  font-size: 1.5rem; /* Ajusta el tamaño de fuente según tus necesidades */
+  font-size: 1.5rem; 
   font-weight: bold;
 }
 
-/* Estilos para el texto de la tarjeta */
+
 .card-text {
-  font-size: 1rem; /* Ajusta el tamaño de fuente según tus necesidades */
+  font-size: 1rem; 
 }
 
-/* Estilos para el contenedor principal */
+
 .grid {
   display: grid;
 }
 
-/* Estilos para las columnas en pantallas medianas */
+
 @media (min-width: 768px) {
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -113,6 +121,31 @@ input {
 }
 
 
+.cc{
+  margin-top: 40px;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #fff;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
+.ll{
+border-radius: 30px;
+width: 50%;
+}
 
-  
+.header-content{
+  min-height: 75vh;
+  background: linear-gradient(rgba(141, 39, 174, 0.3), rgba(141, 39, 174, 0.5)), url("../assets/library-img.jpg") center/cover no-repeat;
+  flex-direction: column;
+}
+.header-title{
+  font-size: 4.2rem;
+  margin-bottom: 70px;
+}
+.header-text{
+  margin-top: -1.8rem;
+  margin-bottom: 2.8rem;
+  opacity: 0.8;
+  max-width: 770px;
+}

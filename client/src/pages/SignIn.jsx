@@ -44,10 +44,10 @@ const SignIn = () => {
             <section className='auth'>
                 <div className='wrapper'>
                     <button className='back-btn' onClick={() => navigate(-1)}>
-                        <FaArrowLeft className='back-icon' />
+                        <FaArrowLeft className='back-icon'/>
                     </button>
                     <div className='banner'>
-                        <img src={tuImagen} alt='Descripción de la imagen' />
+                        <img src={tuImagen} alt='Descripción de la imagen'/>
                     </div>
                     <div className='auth-body'>
                         <form className='auth-form' onSubmit={handleSubmit}>
